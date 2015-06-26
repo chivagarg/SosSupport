@@ -16,26 +16,40 @@ import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class asyncSend extends AsyncTask<Void, Void, Void>{
+public class asyncSend extends AsyncTask<String, Void, Void>{
+    private boolean success = false;
+
     @Override
-    protected Void doInBackground(Void... params) {
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+       // Toast.makeText(getApplicationContext(), "Mail send successfully!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected Void doInBackground(String... params) {
         Mail m = new Mail("postmaster@sandbox05ba2b4a8ba5489bb94ee9ec48fcd2f1.mailgun.org", "08137d2220452144f7eac66702922e2d");
         m.setHost("smtp.mailgun.org");
-        String[] toArr = {"chivagarg@gmail.com"};
+        m.setFrom(params[0]);
+        //String[] toArr = {"chivagarg@gmail.com"};
         //String[] toArr = {"we_can_help@cable.comcast.com"};
         //String[] toArr = {"attcustomercare@att.com"};
-                m.setTo(toArr);
+        String[] toArr = new String[1];
+        toArr[0] = params[1];
+        m.setTo(toArr);
         //m.setFrom("blahblah@shivasapp.com");
-        m.setFrom("postmaster@sandbox05ba2b4a8ba5489bb94ee9ec48fcd2f1.mailgun.org");
-        m.setSubject("Is this working?");
-        m.setBody("Are things broken?");
+       // m.setFrom("postmaster@sandbox05ba2b4a8ba5489bb94ee9ec48fcd2f1.mailgun.org");
+        m.setSubject(params[2]);
+        m.setBody(params[3]);
+        //m.setSubject("Is this working?");
+        //m.setBody("Are things broken?");
        // m.setPort("587");
 
         try {
             // m.addAttachment("/sdcard/filelocation");
 
             if(m.send()) {
-                //Toast.makeText(MainActivity.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
+                success = true;
+                //Toast.makeText(asyncSend.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
             } else {
                // Toast.makeText(MainActivity.this, "Email was not sent.", Toast.LENGTH_LONG).show();
             }

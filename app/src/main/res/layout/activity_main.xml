@@ -5,24 +5,92 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="250dp">
 
-        <TextView
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sender"/>
+            <EditText
+                android:id="@+id/senderTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="postmaster@sandbox05ba2b4a8ba5489bb94ee9ec48fcd2f1.mailgun.org"
+                android:focusable="true"
+                android:selectAllOnFocus="true"
+                android:editable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recipient"/>
+            <EditText
+                android:id="@+id/recipientTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="chivagarg@gmail.com"
+                android:focusable="true"
+                android:selectAllOnFocus="true"
+                android:editable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Test Subject"
+                android:focusable="true"
+                android:id="@+id/subjectTxt"
+                android:selectAllOnFocus="true"
+                android:editable="true"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter email content..."
+                android:focusable="true"
+                android:selectAllOnFocus="true"
+               android:id="@+id/bodyTxt"
+                android:editable="true" />
+        </ScrollView>
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView"
-            android:selectAllOnFocus="true"/>
-    </ScrollView>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="SendMail"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:text="Send"/>
+            android:onClick="SendMail"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:text="Send"/>
+    </LinearLayout>
 
 </RelativeLayout>

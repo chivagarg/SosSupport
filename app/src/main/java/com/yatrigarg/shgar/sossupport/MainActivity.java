@@ -19,13 +19,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void SendMail(View v) throws Exception
     {
-        TextView textView = (TextView)findViewById(R.id.textView);
-        String content = textView.getText().toString();
-       // Parse.Cl
+        String senderTxt = ((TextView)findViewById(R.id.senderTxt)).getText().toString();
+        String recipientTxt = ((TextView)findViewById(R.id.recipientTxt)).getText().toString();
+        String subjectTxt = ((TextView)findViewById(R.id.subjectTxt)).getText().toString();
+        String bodyTxt = ((TextView)findViewById(R.id.bodyTxt)).getText().toString();
 
-
-
-        new asyncSend().execute();
-        //new asyncSend().execute(new URL(), new Integer(0), new Long(1));
+        new asyncSend().execute(senderTxt, recipientTxt, subjectTxt, bodyTxt);
     }
 }
