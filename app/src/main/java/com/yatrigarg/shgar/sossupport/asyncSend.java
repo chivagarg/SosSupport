@@ -4,6 +4,7 @@ import java.util.Properties;
 import java.util.Date;
 
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,11 +19,17 @@ import javax.mail.internet.MimeMessage;
 
 public class asyncSend extends AsyncTask<String, Void, Void>{
     private boolean success = false;
+    private final Context mContext;
+
+    asyncSend(Context context)
+    {
+        mContext = context;
+    }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-       // Toast.makeText(getApplicationContext(), "Mail send successfully!", Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, success ? "Mail sent successfully!" : "Mail delivery failed", Toast.LENGTH_LONG).show();
     }
 
     @Override

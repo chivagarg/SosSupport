@@ -24,6 +24,6 @@ public class MainActivity extends ActionBarActivity {
         String subjectTxt = ((TextView)findViewById(R.id.subjectTxt)).getText().toString();
         String bodyTxt = ((TextView)findViewById(R.id.bodyTxt)).getText().toString();
 
-        new asyncSend().execute(senderTxt, recipientTxt, subjectTxt, bodyTxt);
+        new asyncSend(this).execute(senderTxt, recipientTxt, subjectTxt, bodyTxt);
     }
 }
